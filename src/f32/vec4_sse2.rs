@@ -6,14 +6,15 @@ use rand::{
     Rng,
 };
 
-use crate::{f32::Vec3, Align16};
+use super::Vec3;
+use crate::Align16;
 
 #[cfg(target_arch = "x86")]
-use std::arch::x86::*;
+use core::arch::x86::*;
 #[cfg(target_arch = "x86_64")]
-use std::arch::x86_64::*;
+use core::arch::x86_64::*;
 
-use std::{cmp::Ordering, f32, fmt, mem, ops::*};
+use core::{cmp::Ordering, f32, fmt, mem, ops::*};
 
 pub(crate) const X_AXIS: Align16<(f32, f32, f32, f32)> = Align16((1.0, 0.0, 0.0, 0.0));
 pub(crate) const Y_AXIS: Align16<(f32, f32, f32, f32)> = Align16((0.0, 1.0, 0.0, 0.0));

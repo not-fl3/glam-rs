@@ -9,7 +9,7 @@ use rand::{
     Rng,
 };
 
-use std::ops::{Add, Mul, Sub};
+use core::ops::{Add, Mul, Sub};
 
 pub fn mat4(x_axis: Vec4, y_axis: Vec4, z_axis: Vec4, w_axis: Vec4) -> Mat4 {
     Mat4 {
@@ -245,10 +245,10 @@ impl Mat4 {
     #[inline]
     pub fn transpose(&self) -> Self {
         // sse2 implemenation based off DirectXMath XMMatrixInverse (MIT License)
+        #[cfg(target_arch = "x86_64")]
+        use core::arch::x86_64::*;
         #[cfg(target_arch = "x86")]
         use std::arch::x86::*;
-        #[cfg(target_arch = "x86_64")]
-        use std::arch::x86_64::*;
 
         unsafe {
             let tmp0 = _mm_shuffle_ps(self.x_axis.0, self.y_axis.0, 0b01_00_01_00);

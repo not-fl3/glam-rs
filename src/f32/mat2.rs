@@ -6,7 +6,7 @@ use rand::{
     Rng,
 };
 
-use std::ops::{Add, Mul, Sub};
+use core::ops::{Add, Mul, Sub};
 
 pub fn mat2(x_axis: Vec2, y_axis: Vec2) -> Mat2 {
     Mat2::new(x_axis, y_axis)

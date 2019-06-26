@@ -12,11 +12,11 @@ use crate::{
 };
 
 #[cfg(target_arch = "x86")]
-use std::arch::x86::*;
+use core::arch::x86::*;
 #[cfg(target_arch = "x86_64")]
-use std::arch::x86_64::*;
+use core::arch::x86_64::*;
 
-use std::{cmp::Ordering, f32, fmt, mem, ops::*};
+use core::{cmp::Ordering, f32, fmt, mem, ops::*};
 
 #[derive(Clone, Copy)]
 #[repr(C)]

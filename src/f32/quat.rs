@@ -5,7 +5,7 @@ use rand::{
 };
 
 use super::{Angle, Mat3, Mat4, Quat, Vec3, Vec4};
-use std::{
+use core::{
     cmp::Ordering,
     fmt,
     ops::{Mul, MulAssign, Neg},

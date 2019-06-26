@@ -1,11 +1,11 @@
 #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
 use super::x86_utils::UnionCast;
 use super::{super::Align16, Vec3, Vec4};
+#[cfg(target_arch = "x86_64")]
+use core::arch::x86_64::*;
+use core::{f32, mem};
 #[cfg(target_arch = "x86")]
 use std::arch::x86::*;
-#[cfg(target_arch = "x86_64")]
-use std::arch::x86_64::*;
-use std::{f32, mem};
 
 #[derive(Clone, Copy)]
 #[repr(C)]

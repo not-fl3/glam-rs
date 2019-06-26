@@ -9,7 +9,7 @@ use rand::{
     Rng,
 };
 
-use std::ops::{Add, Mul, Sub};
+use core::ops::{Add, Mul, Sub};
 
 pub fn mat3(x_axis: Vec3, y_axis: Vec3, z_axis: Vec3) -> Mat3 {
     Mat3 {

@@ -8,7 +8,7 @@ use rand::{
     Rng,
 };
 
-use std::{f32, fmt, ops::*};
+use core::{f32, fmt, ops::*};
 
 // TODO: to SIMD or not to SIMD?
 

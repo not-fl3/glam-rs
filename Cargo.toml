@@ -18,7 +18,7 @@ maintenance = { status = "experimental" }
 [features]
 default = ["std"]
 # approx is needed for unit tests, rand is needed for benchmarking
-std = ["approx", "rand"]
+std = ["approx/std", "rand/std"]
 
 # this is primarily for testing the fallback implementation
 scalar-math = []

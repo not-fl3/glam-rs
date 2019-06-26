@@ -1,5 +1,5 @@
 use crate::f32::scalar_sin_cos;
-use std::ops::*;
+use core::ops::*;
 
 #[cfg(feature = "rand")]
 use rand::{
@@ -83,7 +83,7 @@ impl Angle {
         Self::from_radians(if nonnegative {
             result
         } else {
-            std::f32::consts::PI - result
+            core::f32::consts::PI - result
         })
     }
 }
@@ -168,7 +168,7 @@ impl Neg for Angle {
 impl Distribution<Angle> for Standard {
     #[inline]
     fn sample<R: Rng + ?Sized>(&self, rng: &mut R) -> Angle {
-        Angle::from_radians(rng.gen::<f32>() * 2.0 * std::f32::consts::PI)
+        Angle::from_radians(rng.gen::<f32>() * 2.0 * core::f32::consts::PI)
     }
 }
 
