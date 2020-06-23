@@ -1,6 +1,9 @@
 use super::{Vec2, Vec3Mask, Vec4};
 use core::{fmt, ops::*};
 
+#[cfg(feature = "nanoserde")]
+use nanoserde::{DeBin, SerBin};
+
 #[cfg(all(vec3sse2, target_arch = "x86"))]
 use core::arch::x86::*;
 #[cfg(all(vec3sse2, target_arch = "x86_64"))]
@@ -29,6 +32,7 @@ pub struct Vec3(pub(crate) __m128);
 // if compiling with simd enabled assume alignment needs to match the simd type
 #[cfg_attr(vec3f32_align16, repr(align(16)))]
 #[repr(C)]
+#[cfg_attr(feature = "nanoserde", derive(DeBin, SerBin))]
 pub struct Vec3(pub(crate) f32, pub(crate) f32, pub(crate) f32);
 
 #[cfg(vec3sse2)]

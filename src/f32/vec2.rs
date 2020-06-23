@@ -1,9 +1,13 @@
 use crate::f32::{Vec2Mask, Vec3};
 use core::{f32, fmt, ops::*};
 
+#[cfg(feature = "nanoserde")]
+use nanoserde::{DeBin, SerBin};
+
 /// A 2-dimensional vector.
 #[derive(Clone, Copy, PartialEq, PartialOrd, Debug, Default)]
 #[repr(C)]
+#[cfg_attr(feature = "nanoserde", derive(DeBin, SerBin))]
 pub struct Vec2(pub(crate) f32, pub(crate) f32);
 
 #[inline]
