@@ -1,6 +1,9 @@
 use super::{Vec3, Vec4Mask};
 use core::{fmt, ops::*};
 
+#[cfg(feature = "nanoserde")]
+use nanoserde::{DeBin, SerBin};
+
 #[cfg(all(vec4sse2, target_arch = "x86"))]
 use core::arch::x86::*;
 #[cfg(all(vec4sse2, target_arch = "x86_64"))]
@@ -26,6 +29,8 @@ pub(crate) const W_AXIS: Align16<[f32; 4]> = Align16([0.0, 0.0, 0.0, 1.0]);
 #[cfg(vec4sse2)]
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
+#[cfg_attr(feature = "nanoserde", derive(DeBin, SerBin))]
+#[cfg_attr(feature = "nanoserde", nserde(proxy = "crate::f32::glam_nanoserde::Vec4Portable"))]
 pub struct Vec4(pub(crate) __m128);
 
 /// A 4-dimensional vector.
@@ -36,6 +41,7 @@ pub struct Vec4(pub(crate) __m128);
 // if compiling with simd enabled assume alignment needs to match the simd type
 #[cfg_attr(vec4f32_align16, repr(align(16)))]
 #[repr(C)]
+#[cfg_attr(feature = "nanoserde", derive(DeBin, SerBin))]
 pub struct Vec4(
     pub(crate) f32,
     pub(crate) f32,

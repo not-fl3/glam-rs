@@ -24,6 +24,8 @@ use crate::{
 #[cfg(vec3sse2)]
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
+#[cfg_attr(feature = "nanoserde", derive(DeBin, SerBin))]
+#[cfg_attr(feature = "nanoserde", nserde(proxy = "crate::f32::glam_nanoserde::Vec3Portable"))]
 pub struct Vec3(pub(crate) __m128);
 
 /// A 3-dimensional vector.

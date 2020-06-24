@@ -42,3 +42,6 @@ pub use glam_rand::*;
 mod glam_serde;
 #[cfg(feature = "serde")]
 pub use glam_serde::*;
+
+#[cfg(feature = "nanoserde")]
+pub(crate) mod glam_nanoserde;
